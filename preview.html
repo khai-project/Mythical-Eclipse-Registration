@@ -1,0 +1,620 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WELCOME TO MYTHCAL ECLIPSE S2</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #d00020;
+    --dark-red: #65000e;
+    --black: #080609;
+    --white: #f5e9eb;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 16px;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at 50% 15%, #390711 0%, transparent 42%),
+        radial-gradient(ellipse at 10% 90%, #27030b 0%, transparent 35%),
+        linear-gradient(135deg, #050406, #15070c 55%, #030304);
+}
+
+/* Ornamen cahaya di latar belakang */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        115deg,
+        transparent 0px,
+        transparent 100px,
+        rgba(180, 0, 25, 0.035) 101px,
+        transparent 103px
+    );
+}
+
+.ambient {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: #a0001c;
+    filter: blur(150px);
+    opacity: 0.17;
+    pointer-events: none;
+}
+
+.ambient.one {
+    top: -120px;
+    left: -100px;
+}
+
+.ambient.two {
+    right: -120px;
+    bottom: -120px;
+}
+
+/* Kartu utama */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    padding: 42px 32px;
+    background: linear-gradient(
+        145deg,
+        rgba(30, 14, 20, 0.96),
+        rgba(8, 7, 10, 0.98)
+    );
+    border: 1px solid rgba(215, 0, 35, 0.48);
+    border-radius: 8px;
+    box-shadow:
+        0 0 35px rgba(150, 0, 25, 0.18),
+        0 0 90px rgba(100, 0, 20, 0.12),
+        inset 0 0 30px rgba(100, 0, 20, 0.07);
+    animation: appear 1s ease;
+}
+
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-color: var(--red);
+    border-style: solid;
+    pointer-events: none;
+}
+
+.container::before {
+    top: 10px;
+    left: 10px;
+    border-width: 1px 0 0 1px;
+}
+
+.container::after {
+    right: 10px;
+    bottom: 10px;
+    border-width: 0 1px 1px 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ikon eclipse */
+.eclipse {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 22px;
+    position: relative;
+    border-radius: 50%;
+    background: #080609;
+    box-shadow:
+        0 0 15px rgba(255, 0, 40, 0.5),
+        0 0 45px rgba(200, 0, 35, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eclipse::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid rgba(255, 0, 40, 0.75);
+    border-radius: 50%;
+    animation: pulse 3s infinite;
+}
+
+.eclipse span {
+    font-size: 56px;
+    color: #e6002e;
+    text-shadow: 0 0 20px #ff002f;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.12);
+        opacity: 0.3;
+    }
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-size: clamp(22px, 5vw, 30px);
+    line-height: 1.5;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #fff0f2;
+    text-shadow: 0 0 15px rgba(255, 0, 45, 0.6);
+}
+
+.subtitle {
+    text-align: center;
+    margin: 12px 0 28px;
+    color: #b9a4ab;
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 1.8;
+}
+
+.divider {
+    height: 1px;
+    margin: 0 auto 28px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #a90023,
+        #ff304f,
+        #a90023,
+        transparent
+    );
+}
+
+/* Tombol utama */
+.main-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 17px 12px;
+    border: 1px solid var(--red);
+    background: linear-gradient(110deg, #780018, #280711);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+.btn:hover {
+    background: linear-gradient(110deg, #d0002a, #6c0019);
+    box-shadow: 0 0 24px rgba(255, 0, 45, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn.secondary {
+    background: transparent;
+    border-color: #68505a;
+    color: #e6d5da;
+}
+
+.btn.secondary:hover {
+    background: rgba(150, 0, 30, 0.2);
+    border-color: #ed173c;
+    color: white;
+}
+
+/* Form login dan registrasi */
+.form-panel {
+    display: none;
+    animation: appear 0.4s ease;
+}
+
+.form-panel.active {
+    display: block;
+}
+
+.form-title {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-size: 20px;
+    color: #ff294c;
+    margin-bottom: 8px;
+}
+
+.form-desc {
+    text-align: center;
+    font-size: 12px;
+    color: #a9939c;
+    margin-bottom: 23px;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 11px;
+    color: #e6cbd2;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.field input {
+    width: 100%;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #493039;
+    border-radius: 3px;
+    outline: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.field input:focus {
+    border-color: #e0002d;
+    box-shadow: 0 0 12px rgba(200, 0, 35, 0.15);
+}
+
+.field input::placeholder {
+    color: #715b64;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.message {
+    display: none;
+    margin-top: 16px;
+    padding: 12px;
+    border: 1px solid #61303c;
+    background: rgba(100, 0, 20, 0.15);
+    color: #ffc4cf;
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.message.show {
+    display: block;
+}
+
+.back-btn {
+    margin-top: 20px;
+    border: none;
+    background: none;
+    color: #b49ca5;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%;
+    padding: 8px;
+}
+
+.back-btn:hover {
+    color: #ff3354;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 10px;
+    color: #78636c;
+    letter-spacing: 1.5px;
+}
+
+.footer span {
+    color: #bd1734;
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding: 38px 22px;
+    }
+
+    .subtitle {
+        font-size: 10px;
+        letter-spacing: 1.4px;
+    }
+
+    .btn {
+        font-size: 11px;
+        letter-spacing: 0.8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<main class="container">
+
+    <div class="eclipse">
+        <span>☾</span>
+    </div>
+
+    <h1>WELCOME TO<br>MYTHCAL ECLIPSE S2</h1>
+
+    <p class="subtitle">
+        ENTER THE DARKNESS · JOIN THE UNKNOWN
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- HALAMAN UTAMA -->
+    <section id="home" class="form-panel active">
+
+        <div class="main-buttons">
+            <button class="btn" onclick="showForm('register')">
+                ✦ DAFTAR MEMBER BARU ✦
+            </button>
+
+            <button class="btn secondary" onclick="showForm('login')">
+                ☽ LOGIN MEMBER LAMA ☽
+            </button>
+        </div>
+
+        <div class="footer">
+            YOUR JOURNEY BEGINS IN THE <span>DARK</span>
+        </div>
+
+    </section>
+
+    <!-- FORM REGISTRASI -->
+    <section id="register" class="form-panel">
+
+        <h2 class="form-title">CREATE YOUR ACCOUNT</h2>
+        <p class="form-desc">Masuki dunia Mythcal Eclipse.</p>
+
+        <form id="registerForm">
+
+            <div class="field">
+                <label for="regUsername">USERNAME</label>
+                <input id="regUsername" name="username"
+                    type="text" placeholder="Buat username"
+                    minlength="3" maxlength="24" required>
+            </div>
+
+            <div class="field">
+                <label for="regEmail">EMAIL</label>
+                <input id="regEmail" name="email"
+                    type="email" placeholder="nama@email.com"
+                    required>
+            </div>
+
+            <div class="field">
+                <label for="regPassword">PASSWORD</label>
+                <input id="regPassword" name="password"
+                    type="password" placeholder="Minimal 8 karakter"
+                    minlength="8" required>
+            </div>
+
+            <div class="field">
+                <label for="confirmPassword">KONFIRMASI PASSWORD</label>
+                <input id="confirmPassword" name="confirmPassword"
+                    type="password" placeholder="Ulangi password"
+                    minlength="8" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">
+                    ✦ BUAT AKUN ✦
+                </button>
+            </div>
+
+        </form>
+
+        <div id="registerMessage" class="message" role="status"></div>
+
+        <button class="back-btn" onclick="showForm('home')">
+            ← KEMBALI KE MENU UTAMA
+        </button>
+
+    </section>
+
+    <!-- FORM LOGIN -->
+    <section id="login" class="form-panel">
+
+        <h2 class="form-title">WELCOME BACK</h2>
+        <p class="form-desc">Bayanganmu telah kembali...</p>
+
+        <form id="loginForm">
+
+            <div class="field">
+                <label for="loginEmail">EMAIL</label>
+                <input id="loginEmail" name="email"
+                    type="email" placeholder="Email akunmu"
+                    required>
+            </div>
+
+            <div class="field">
+                <label for="loginPassword">PASSWORD</label>
+                <input id="loginPassword" name="password"
+                    type="password" placeholder="Masukkan password"
+                    required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">
+                    ☽ LOGIN SEKARANG ☽
+                </button>
+            </div>
+
+        </form>
+
+        <div id="loginMessage" class="message" role="status"></div>
+
+        <button class="back-btn" onclick="showForm('home')">
+            ← KEMBALI KE MENU UTAMA
+        </button>
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL = "https://kstrewklwpkincmhlbcm.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Xz95aMTMP6F1wXaWl-dVzQ_IXDco02I";
+
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+function showForm(formId) {
+    document.querySelectorAll(".form-panel").forEach(panel => {
+        panel.classList.remove("active");
+    });
+
+    document.getElementById(formId).classList.add("active");
+
+    document.querySelectorAll(".message").forEach(message => {
+        message.classList.remove("show");
+        message.textContent = "";
+    });
+}
+
+function showMessage(id, text) {
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.classList.add("show");
+}
+
+// REGISTRASI MEMBER BARU
+document.getElementById("registerForm")
+.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("regUsername")
+        .value.trim();
+    const email = document.getElementById("regEmail")
+        .value.trim();
+    const password = document.getElementById("regPassword").value;
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if (username.length < 3) {
+        showMessage("registerMessage",
+            "Username minimal 3 karakter.");
+        return;
+    }
+
+    if (password.length < 8) {
+        showMessage("registerMessage",
+            "Password minimal 8 karakter.");
+        return;
+    }
+
+    if (password !== confirm) {
+        showMessage("registerMessage",
+            "Konfirmasi password tidak cocok!");
+        return;
+    }
+
+    const { data, error } = await db.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+            data: {
+                username: username
+            }
+        }
+    });
+
+    if (error) {
+        showMessage("registerMessage",
+            "Registrasi gagal: " + error.message);
+        return;
+    }
+
+    if (data.session) {
+        showMessage("registerMessage",
+            "Registrasi berhasil! Selamat datang, " + username + ".");
+    } else {
+        showMessage("registerMessage",
+            "Pendaftaran diterima. Periksa email untuk verifikasi akun sebelum login.");
+    }
+});
+
+// LOGIN MEMBER LAMA
+document.getElementById("loginForm")
+.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const { data, error } = await db.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        showMessage("loginMessage",
+            "Login gagal. Periksa email, password, atau status verifikasi.");
+        return;
+    }
+
+    const username =
+        data.user.user_metadata?.username || data.user.email;
+
+    showMessage("loginMessage",
+        "Login berhasil! Selamat datang kembali, " + username + ".");
+});
+</script>
+
+</body>
+</html>
